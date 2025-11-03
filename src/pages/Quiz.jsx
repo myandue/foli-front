@@ -199,7 +199,7 @@ export default function Quiz() {
               <>
                 <button
                   onClick={handleGradeQuiz}
-                  className="w-full bg-green-500 text-white rounded py-2 hover:bg-green-600"
+                  className="w-full bg-green-500 text-white rounded py-2 hover:bg-green-600 disabled:bg-gray-400"
                   disabled={
                     Object.keys(selectedAnswers).length !== quizData.length
                   }
