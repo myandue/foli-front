@@ -13,6 +13,10 @@ export default function Stt() {
   });
   const [loading, setLoading] = useState(false);
 
+  const setQuizData = (data) => {
+    setResult((prev) => ({ ...prev, quiz: data }));
+  };
+
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -155,7 +159,10 @@ export default function Stt() {
                 {/** TODO 퀴즈 파트는 랜더링 방식이 달라야함 */}
                 {result.quiz && (
                   <pre className="mt-4 bg-gray-100 p-3 rounded whitespace-pre-wrap">
-                    {JSON.stringify(result.quiz, null, 2)}
+                    <QuizSection
+                      fetchQuizData={result.quiz}
+                      onQuizDataChange={setQuizData}
+                    />
                   </pre>
                 )}
               </div>
