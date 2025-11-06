@@ -4,7 +4,7 @@ const baseUrl = process.env.BACKEND_SERVER_URL || "http://localhost:8000";
 
 const api = axios.create({
   baseURL: baseUrl,
-  timeout: 10000,
+  timeout: 60000,
 });
 
 // api 요청 시 access_token 헤더에 포함

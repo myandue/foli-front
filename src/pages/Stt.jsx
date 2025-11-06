@@ -69,6 +69,7 @@ export default function Stt() {
     }
   };
 
+  // TODO: 각 result 존재할 시에 버튼 비활성화
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
       <h1 className="text-2xl font-bold mb-4">오디오 파일 업로드 & 분석</h1>
