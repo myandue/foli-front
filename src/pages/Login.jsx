@@ -15,10 +15,10 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await api.post("/api/token", form);
-      const { access_token, refresh_token } = res.data;
+      const { access, refresh } = res.data;
 
-      localStorage.setItem("access_token", access_token);
-      localStorage.setItem("refresh_token", refresh_token);
+      localStorage.setItem("access_token", access);
+      localStorage.setItem("refresh_token", refresh);
       navigate("/");
     } catch (err) {
       setMessage("로그인 실패: " + (err.response?.data?.detail || "오류"));

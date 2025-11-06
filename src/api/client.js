@@ -58,17 +58,17 @@ api.interceptors.response.use(
 
       try {
         const response = await axios.post(`${baseUrl}/api/token/refresh`, {
-          refresh_token: refreshToken,
+          refresh: refreshToken,
         });
 
-        const { access_token, refresh_token } = response.data;
-        localStorage.setItem("access_token", access_token);
-        localStorage.setItem("refresh_token", refresh_token);
+        const { access, refresh } = response.data;
+        localStorage.setItem("access_token", access);
+        localStorage.setItem("refresh_token", refresh);
 
-        api.defaults.headers["Authorization"] = `Bearer ${access_token}`;
-        originalRequest.headers["Authorization"] = `Bearer ${access_token}`;
+        api.defaults.headers["Authorization"] = `Bearer ${access}`;
+        originalRequest.headers["Authorization"] = `Bearer ${access}`;
 
-        onRefreshed(access_token); // 대기 중인 요청들 실행
+        onRefreshed(access); // 대기 중인 요청들 실행
         return api(originalRequest); // 원래 요청 재시도
       } catch (refreshError) {
         console.error(

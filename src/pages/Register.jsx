@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import api from "../api/client";
 
 export default function Register() {
   const [form, setForm] = useState({ username: "", password: "" });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -14,7 +16,8 @@ export default function Register() {
     e.preventDefault();
     try {
       await api.post("/api/users/register", form);
-      setMessage("회원가입 성공! 로그인해주세요.");
+      alert("회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.");
+      navigate("/login");
     } catch (err) {
       setMessage("회원가입 실패: " + (err.response?.data?.detail || "오류"));
     }

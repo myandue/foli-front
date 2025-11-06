@@ -1,6 +1,8 @@
 import { useState } from "react";
 import api from "../api/client";
 
+import QuizSection from "../components/QuizSection";
+
 export default function Stt() {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -25,18 +27,16 @@ export default function Stt() {
     if (!file) return alert("파일을 선택해주세요.");
 
     const formData = new FormData();
-    formData.append("audio", file);
+    formData.append("audio_file", file);
 
     try {
       setUploading(true);
 
-      const res = await api.post("/api/speech-to-text/upload", formData, {
+      const res = await api.post("/api/speech-to-text/upload-audio", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      if (!res.ok) throw new Error("업로드 실패");
 
       const audio_id = await res.data.id;
       setAudioId(audio_id);
@@ -58,7 +58,6 @@ export default function Stt() {
       const res = await api.post(`/api/speech-to-text/${type}`, {
         id: audioId,
       });
-      if (!res.ok) throw new Error(`${type} 호출 실패`);
       const data = await res.data[type];
 
       setResult((prev) => ({ ...prev, [type]: data }));
@@ -156,7 +155,6 @@ export default function Stt() {
                 >
                   {loading ? "Generating Quiz..." : "Generate Quiz"}
                 </button>
-                {/** TODO 퀴즈 파트는 랜더링 방식이 달라야함 */}
                 {result.quiz && (
                   <pre className="mt-4 bg-gray-100 p-3 rounded whitespace-pre-wrap">
                     <QuizSection

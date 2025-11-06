@@ -15,8 +15,22 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/quiz" element={<Quiz />} />
-        <Route path="/stt" element={<Stt />} />
+        <Route
+          path="/quiz"
+          element={
+            <ProtectedRoute>
+              <Quiz />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/stt"
+          element={
+            <ProtectedRoute>
+              <Stt />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
