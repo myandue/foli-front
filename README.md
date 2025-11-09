@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Foli
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 목적
 
-## Available Scripts
+- 학습을 목적으로 한 python 서비스 구현
+- 혼자서 하나의 프로젝트를 완성해낼 수 있을 정도의 프론트엔드 학습
 
-In the project directory, you can run:
+## 목표
 
-### `npm start`
+- 프로젝트 완성
+- 기본적인 Authentication에 대한 이해 및 적용
+- 기획/프론트엔드/백엔드/AI 영역을 나누어 스케쥴에 맞춰 진행
+- 사용할 프레임워크 및 라이브러리(Django, FastAPI, React)에 대한 학습
+- AI 서비스 활용 (Clova Studio, Clova Speech)
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+# FrontEnd
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tools
 
-### `npm run build`
+- React
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 기능
+> ( ): 구현 예정
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 유저
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 회원가입
+- (프로필 조회)
+- (프로필 수정)
+- (회원 탈퇴)
 
-### `npm run eject`
+#### Auth
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 로그인
+- (로그아웃)
+- API 호출 시, 헤더에 access_token 포함
+- access_token 만료 응답을 받을 시, access_token과 refresh_token 재발급 및 API 재요청 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 퀴즈
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 검색어/난이도/퀴즈개수 입력 및 제출하여 퀴즈 생성 (default: 난이도 - NORMAL, 개수 - 10개)
+- 주어진 퀴즈에 대한 응답을 모두 선택 완료 했을 시에 채점
+- 채점 완료 후 '새 퀴즈 시작하기' / '다시 도전하기' 선택
+- 퀴즈 파트는 STT 서비스에서도 사용할 예정으로, 기능과 페이지를 별도의 Component로 분리
+  
+#### 음성 파일 요약
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 음성 파일 업로드 - 업로드 완료 시 [transcript, summary, quiz] 탭 파트 생성
+- Transcribe API 호출 및 렌더링
+- Summarize API 호출 및 렌더링
+- 해당 transcription 기반 Quiz 생성 API 호출 및 렌더링
+- Summarize API, Quiz API는 transcription이 존재할 경우에만 호출 가능 
+- (transcription 기반 질의응답 Chat Bot 호출)
