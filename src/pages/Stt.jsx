@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/client";
 
 import QuizSection from "../components/QuizSection";
 
 export default function Stt() {
+  const navigate = useNavigate();
+
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [audioId, setAudioId] = useState(null);
@@ -72,6 +75,12 @@ export default function Stt() {
   // TODO: 각 result 존재할 시에 버튼 비활성화
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        홈
+      </button>
       <h1 className="text-2xl font-bold mb-4">오디오 파일 업로드 & 분석</h1>
 
       {/** 파일 업로드 섹션 */}

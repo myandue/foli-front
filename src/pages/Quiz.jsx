@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/client";
 
 import QuizSection from "../components/QuizSection";
 
 export default function Quiz() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     keyword: "",
     level: "NORMAL",
@@ -64,6 +67,12 @@ export default function Quiz() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
+      <button
+        onClick={() => navigate("/")}
+        className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+      >
+        홈
+      </button>
       {!quizData ? (
         <form onSubmit={fetchQuiz} className="space-y-4">
           <h2 className="text-xl font-semibold text-center">퀴즈 생성</h2>
