@@ -132,8 +132,8 @@ export default function Stt() {
                   {loading ? "Trnascribing..." : "Transcription"}
                 </button>
                 {result.transcript && (
-                  <pre className="mt-4 bg-gray-100 p-3 rounded whitespace-pre-wrap">
-                    {JSON.stringify(result.transcript, null, 2)}
+                  <pre className="mt-4 bg-gray-100 p-3 rounded whitespace-pre-line">
+                    {result.transcript}
                   </pre>
                 )}
               </div>
@@ -149,8 +149,8 @@ export default function Stt() {
                   {loading ? "Summarizing..." : "Summary"}
                 </button>
                 {result.summary && (
-                  <pre className="mt-4 bg-gray-100 p-3 rounded whitespace-pre-wrap">
-                    {JSON.stringify(result.summary, null, 2)}
+                  <pre className="mt-4 bg-gray-100 p-3 rounded whitespace-pre-line">
+                    {result.summary}
                   </pre>
                 )}
               </div>
